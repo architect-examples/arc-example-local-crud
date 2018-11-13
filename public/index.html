@@ -1,0 +1,16 @@
+<b>Hello from <code>/public/index.html</code></b>
+
+<div id=main></div>
+<script type=module>
+import cat from './cat-form.mjs'
+
+async function run() {
+  let res = await fetch('/cats')
+  let json = await res.json()
+  main.innerHTML = cat()
+  main.innerHTML += json.Items.map(cat).join('')
+}
+
+// run run run!
+run()
+</script>
