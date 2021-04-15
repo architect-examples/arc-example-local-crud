@@ -1,9 +1,11 @@
 let arc = require('@architect/functions')
-let data = require('@architect/data')
-let status = 302
-let location = '/'
 
-exports.handler = async function http(req) {
+exports.handler = arc.http.async(update)
+
+async function update (req) {
+
+  let data = await arc.tables()
+
   await data.cats.update({
     Key: {
       catID: req.params.catID
@@ -16,5 +18,8 @@ exports.handler = async function http(req) {
       ':color': req.body.color
     }
   })
-  return {status, location}
+
+  return {
+    location: '/'
+  }
 }

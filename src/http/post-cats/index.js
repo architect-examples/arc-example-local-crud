@@ -1,9 +1,11 @@
-let data = require('@architect/data')
+let arc = require('@architect/functions')
 
-exports.handler = async function http(req) {
-  let result = await data.cats.put(req.body)
+exports.handler = arc.http.async(create)
+
+async function create (req) {
+  let data = await arc.tables()
+  await data.cats.put(req.body)
   return {
-    status: 302, 
     location: '/'
   }
 }

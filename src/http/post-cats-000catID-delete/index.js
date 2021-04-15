@@ -1,9 +1,11 @@
 let arc = require('@architect/functions')
-let data = require('@architect/data')
-let status = 302
-let location = '/'
 
-exports.handler = async function http(req) {
+exports.handler = arc.http.async(destroy)
+
+async function destroy (req) {
+  let data = await arc.tables()
   await data.cats.delete({catID: req.params.catID})
-  return {status, location}
+  return {
+    location: '/'
+  }
 }

@@ -1,7 +1,6 @@
-let data = require('@architect/data')
+let arc = require('@architect/functions')
 
 exports.handler = async function http(req) {
-  return {
-    body: JSON.stringify(await data.cats.scan({}))
-  }
+  let data = await arc.tables()
+  return data.cats.scan({})
 }

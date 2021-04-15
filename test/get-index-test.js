@@ -1,12 +1,11 @@
-let arc = require('@architect/architect')
-let data = require('@architect/data')
+let sandbox = require('@architect/sandbox')
+let arc = require('@architect/functions')
 let test = require('tape')
 let tiny = require('tiny-json-http')
 
-let end 
 test('start sandbox', async t=> {
   t.plan(1)
-  end = await arc.sandbox.start()
+  await sandbox.start()
   t.ok('started sandbox')
 })
 
@@ -20,6 +19,7 @@ test('can get /', async t=> {
 
 test('can list cats', async t=> {
   t.plan(1)
+  let data = await arc.tables()
   let result = await data.cats.scan({})
   t.ok(result, 'got result')
   console.log(result)
@@ -27,6 +27,7 @@ test('can list cats', async t=> {
 
 test('add a few cats', async t=> {
   t.plan(1)
+  let data = await arc.tables()
   let result = await Promise.all([
     data.cats.put({catID: 'sutro'}),
     data.cats.put({catID: 'Mr Little Jeans'}),
@@ -44,8 +45,8 @@ test('call the api', async t=> {
   console.log(result.body)
 })
 
-test('shut down the sandbox', t=> {
+test('shut down the sandbox', async t=> {
   t.plan(1)
-  end()
+  await sandbox.end()
   t.ok(true, 'shutdown successfully')
 })
