@@ -2,6 +2,7 @@
   "name": "arc-example-local",
   "version": "1.0.0",
   "scripts": {
+    "start": "sandbox",
     "test": "tape test/*-test.js | tap-spec"
   },
   "author": "Brian LeRoux <b@brian.io>",
