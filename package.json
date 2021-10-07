@@ -2,18 +2,18 @@
   "name": "arc-example-local",
   "version": "1.0.0",
   "scripts": {
-    "start": "sandbox",
+    "start": "npx sandbox",
     "test": "tape test/*-test.js | tap-spec"
   },
   "author": "Brian LeRoux <b@brian.io>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@architect/functions": "latest",
-    "@architect/sandbox": "latest"
+    "@architect/functions": "^4.0.0",
+    "@architect/sandbox": "^4.1.1"
   },
   "devDependencies": {
-    "tap-spec": "latest",
-    "tape": "latest",
-    "tiny-json-http": "latest"
+    "tap-spec": "^5.0.0",
+    "tape": "^5.3.1",
+    "tiny-json-http": "^7.3.0"
   }
 }
