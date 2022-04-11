@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "tap-spec": "^5.0.0",
-    "tape": "^5.3.1",
+    "tape": "^5.5.3",
     "tiny-json-http": "^7.3.0"
   }
 }
